@@ -31,10 +31,10 @@ def set_verbose_logging(verbose_logging=False):
 # Define the format of your input data including unused columns
 CSV_COLUMNS = ['levels_played', 'levels_won', 'levels_lost', 'days_since_install', 'affluence',
                'grind', 'skill', 'engagement', 'experience', 'churn_prob',
-               'open_store', 'open_garage', 'gameplays', 'country',
+               'open_store', 'open_garage', 'gameplays',
                'user_type']
 CSV_COLUMN_DEFAULTS = [[0], [0], [0], [0], [0], [0], [0], [0], [0], [0],
-                       [0], [0], [0], [''], ['']]
+                       [0], [0], [0], ['']]
 LABEL_COLUMN = 'user_type'
 LABELS = [' freeloader', ' minnow', ' dolphin', 'whale']
 
@@ -79,14 +79,13 @@ INPUT_COLUMNS = [
     layers.real_valued_column('churn_prob'),
     layers.real_valued_column('open_store'),
     layers.real_valued_column('open_garage'),
-    layers.real_valued_column('gameplays'),
-    layers.sparse_column_with_hash_bucket('country', hash_bucket_size=1000)
+    layers.real_valued_column('gameplays')
 
 ]
 
 UNUSED_COLUMNS = set(CSV_COLUMNS) - {col.name for col in INPUT_COLUMNS} - {LABEL_COLUMN}
 
-def build_estimator(model_dir, embedding_size=14, hidden_units=None):
+def build_estimator(model_dir, embedding_size=13, hidden_units=None):
   """Build a wide and deep model for predicting income category.
 
   Wide and deep models use deep neural nets to learn high level abstractions
@@ -113,7 +112,7 @@ def build_estimator(model_dir, embedding_size=14, hidden_units=None):
     A DNNCombinedLinearClassifier
   """
   (levels_played, levels_won, levels_lost, days_since_install, affluence, grind, skill, engagement, experience, churn_prob, open_store
-    , open_garage, gameplays, country) = INPUT_COLUMNS
+    , open_garage, gameplays) = INPUT_COLUMNS
   """Build an estimator."""
 
   # Reused Transformations.
@@ -126,12 +125,12 @@ def build_estimator(model_dir, embedding_size=14, hidden_units=None):
       # Interactions between different categorical features can also
       # be added as new virtual features.
       levels_played, levels_won, levels_lost, days_since_install, affluence, grind, skill, engagement, experience, churn_prob, open_store
-    , open_garage, gameplays, country,
+    , open_garage, gameplays,
   ]
 
   deep_columns = [
       levels_played, levels_won, levels_lost, days_since_install, affluence, grind, skill, engagement, experience, churn_prob, open_store
-    , open_garage, gameplays, country,
+    , open_garage, gameplays,
   ]
 
   return tf.contrib.learn.DNNLinearCombinedClassifier(

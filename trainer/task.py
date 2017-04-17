@@ -13,7 +13,7 @@ def generate_experiment_fn(train_files,
                            num_epochs=None,
                            train_batch_size=40,
                            eval_batch_size=40,
-                           embedding_size=14,
+                           embedding_size=13,
                            first_layer_size=100,
                            num_layers=4,
                            scale_factor=0.7,
@@ -129,7 +129,7 @@ if __name__ == '__main__':
   parser.add_argument(
       '--embedding-size',
       help='Number of embedding dimensions for categorical columns',
-      default=14,
+      default=13,
       type=int
   )
   parser.add_argument(
