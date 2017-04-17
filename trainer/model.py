@@ -125,12 +125,12 @@ def build_estimator(model_dir, embedding_size=14, hidden_units=None):
       # Interactions between different categorical features can also
       # be added as new virtual features.
       levels_played, levels_won, levels_lost, days_since_install, affluence, grind, skill, engagement, experience, churn_prob, open_store
-    , open_garage, gameplays, country,
+    , open_garage, gameplays, country
   ]
 
   deep_columns = [
       levels_played, levels_won, levels_lost, days_since_install, affluence, grind, skill, engagement, experience, churn_prob, open_store
-    , open_garage, gameplays, country,
+    , open_garage, gameplays, country
   ]
 
   return tf.contrib.learn.DNNLinearCombinedClassifier(

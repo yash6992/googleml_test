@@ -129,7 +129,7 @@ if __name__ == '__main__':
   parser.add_argument(
       '--embedding-size',
       help='Number of embedding dimensions for categorical columns',
-      default=8,
+      default=14,
       type=int
   )
   parser.add_argument(
