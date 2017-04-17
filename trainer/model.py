@@ -33,8 +33,8 @@ CSV_COLUMNS = ['levels_played', 'levels_won', 'levels_lost', 'days_since_install
                'grind', 'skill', 'engagement', 'experience', 'churn_prob',
                'open_store', 'open_garage', 'gameplays',
                'user_type']
-CSV_COLUMN_DEFAULTS = [[0], [0], [0], [0], [0], [0], [0], [0], [0], [0],
-                       [0], [0], [0], ['']]
+CSV_COLUMN_DEFAULTS = [[0], [0], [0], [0], [0.0], [0.0], [0.0], [0.0], [0.0], [0.0],
+                       [0.0], [0.0], [0.0], ['']]
 LABEL_COLUMN = 'user_type'
 LABELS = [' freeloader', ' minnow', ' dolphin', 'whale']
 
