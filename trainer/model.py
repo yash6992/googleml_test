@@ -79,6 +79,7 @@ INPUT_COLUMNS = [
     layers.real_valued_column('churn_prob'),
     layers.real_valued_column('open_store'),
     layers.real_valued_column('open_garage'),
+    layers.real_valued_column('gameplays'),
     layers.sparse_column_with_hash_bucket('country', hash_bucket_size=1000)
 
 ]
@@ -125,12 +126,12 @@ def build_estimator(model_dir, embedding_size=14, hidden_units=None):
       # Interactions between different categorical features can also
       # be added as new virtual features.
       levels_played, levels_won, levels_lost, days_since_install, affluence, grind, skill, engagement, experience, churn_prob, open_store
-    , open_garage, gameplays, country
+    , open_garage, gameplays, country,
   ]
 
   deep_columns = [
       levels_played, levels_won, levels_lost, days_since_install, affluence, grind, skill, engagement, experience, churn_prob, open_store
-    , open_garage, gameplays, country
+    , open_garage, gameplays, country,
   ]
 
   return tf.contrib.learn.DNNLinearCombinedClassifier(
